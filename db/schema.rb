@@ -10,14 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_27_180404) do
+ActiveRecord::Schema.define(version: 2019_03_27_183954) do
 
   create_table "bins", force: :cascade do |t|
     t.string "name"
     t.integer "bushel_capacity"
     t.integer "level"
-    t.integer "load_in"
-    t.integer "load_out"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
