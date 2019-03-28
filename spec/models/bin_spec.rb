@@ -9,6 +9,13 @@ RSpec.describe Bin, type: :model do
     expect(build(:bin, name: nil)).not_to be_valid
   end
 
+  it "requires a unique name" do 
+    create(:bin, name: 'Hess')
+    bin = build(:bin, name: 'Hess')
+    bin.valid?
+    expect(bin.errors.full_messages).to include("Name has already been taken")
+  end
+
   it "is invalid without a bushel_capacity" do 
     expect(build(:bin, bushel_capacity: nil)).not_to be_valid
   end
