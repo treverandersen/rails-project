@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_28_153035) do
+ActiveRecord::Schema.define(version: 2019_03_28_173657) do
 
   create_table "bins", force: :cascade do |t|
     t.string "name"
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 2019_03_28_153035) do
     t.string "name"
     t.integer "acres"
     t.integer "bushel_per_acre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "loads", force: :cascade do |t|
+    t.integer "load_in"
+    t.integer "load_out"
+    t.integer "net_weight"
+    t.integer "test_weight"
+    t.decimal "moisture"
+    t.integer "bushels"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
