@@ -1,0 +1,15 @@
+<h1>Storage</h1>
+
+<table>
+	<tr>
+		<th>Bin Name</th>
+		<th>Bushel Capacity</th>
+	</tr>
+	<% @bins.each do |bin| %>
+		<tr>
+			<td><%= bin.name %></td>
+			<td><%= bin.bushel_capacity %>
+			<td><%= link_to 'Show', bin_path(bin) %></td>
+		</tr>
+	<% end %>
+</table>
