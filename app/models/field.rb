@@ -1,7 +1,7 @@
 class Field < ApplicationRecord
-  has_many :loads
-  has_many :drivers, through: :loads
-  has_many :bins, through: :loads
+  has_many :tloads
+  has_many :drivers, through: :tloads
+  has_many :bins, through: :tloads
 
 	validates :name, presence: true
 	validates :name, uniqueness: true

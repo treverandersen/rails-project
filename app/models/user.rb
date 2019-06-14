@@ -1,4 +1,9 @@
 class User < ApplicationRecord
+  has_many :tloads
+  has_many :bins, through: :tloads
+  has_many :drivers, through: :tloads
+  has_many :fields, through: :tloads
+  
   before_save { self.email = email.downcase }
   has_secure_password
 

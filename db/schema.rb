@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_12_215457) do
+ActiveRecord::Schema.define(version: 2019_06_14_180123) do
 
   create_table "bins", force: :cascade do |t|
     t.string "name"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2019_06_12_215457) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "loads", force: :cascade do |t|
+  create_table "tloads", force: :cascade do |t|
     t.integer "load_full"
     t.integer "load_empty"
     t.integer "net_weight"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2019_06_12_215457) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index [nil], name: "index_users_on_tloads"
   end
 
 end

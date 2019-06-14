@@ -1,4 +1,4 @@
-class Load < ApplicationRecord
+class Tload < ApplicationRecord
   belongs_to :driver
   belongs_to :bin
   belongs_to :field

@@ -1,0 +1,57 @@
+<%= form_for @tload do |f| %>
+	<% if @tload.errors.any? %>
+		<div id="error_explanation">
+			<h2>
+				<%= pluralize(@tload.errors.count, "error") %>
+				prohibited this load from being saved:
+			</h2>
+			
+			<ul>
+			<% @tload.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+			</ul>
+		</div>
+	<% end %>
+  
+	<p>
+		<%= f.label :load_full %>
+		<%= f.number_field :load_full %>
+	</p>
+
+	<p>
+		<%= f.label :load_empty %>
+		<%= f.number_field :load_empty %>
+	</p>
+
+	<p>
+		<%= f.label :crop %>
+		<%= f.select(:crop, [ "Corn", "Soybeans" ]) %>
+	</p>
+
+  <p>
+    <%= f.label :moisture %>
+    <%= f.number_field :moisture %>
+  </p>
+
+  <br></br>
+
+  <%= f.label :bin_id, "Select a Bin" %>
+  <%= f.collection_select(:bin, Bin.all, :id, :name, prompt: true) %>
+
+  <br></br>
+
+  <%= f.label :driver_id, "Select a Driver" %>
+  <%= f.collection_select(:driver, Driver.all, :id, :name, prompt: true) %>
+
+  <br></br>
+
+  <%= f.label :field_id, "Select a Field" %>
+  <%= f.collection_select(:field, Field.all, :id, :name, prompt: true) %>
+
+  <br></br>
+
+	<p>
+		<%= f.submit "Create Load" %>
+	</p>
+<% end %>
