@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_14_180123) do
+ActiveRecord::Schema.define(version: 2019_06_17_233058) do
 
   create_table "bins", force: :cascade do |t|
     t.string "name"
@@ -44,9 +44,10 @@ ActiveRecord::Schema.define(version: 2019_06_14_180123) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "in_out", default: false, null: false
-    t.index [nil], name: "index_loads_on_bin"
-    t.index [nil], name: "index_loads_on_driver"
-    t.index [nil], name: "index_loads_on_field"
+    t.index [nil], name: "index_tloads_on_bin"
+    t.index [nil], name: "index_tloads_on_driver"
+    t.index [nil], name: "index_tloads_on_field"
+    t.index [nil], name: "index_tloads_on_user"
   end
 
   create_table "users", force: :cascade do |t|
@@ -55,7 +56,6 @@ ActiveRecord::Schema.define(version: 2019_06_14_180123) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index [nil], name: "index_users_on_tloads"
   end
 
 end

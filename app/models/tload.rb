@@ -1,8 +1,9 @@
 class Tload < ApplicationRecord
+  belongs_to :user
   belongs_to :driver
   belongs_to :bin
   belongs_to :field
-
+  
   validates :driver_id, presence: true
   validates :bin_id, presence: true
   validates :field_id, presence: true
