@@ -3,13 +3,21 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
-  resources :users
-
-  resources :bins 
-  resources :drivers
-  resources :fields
-  resources :tloads
   
+  resources :users, :tloads 
+
+  resources :bins do
+    resources :drivers, :fields, :tloads,  only: [:index]
+  end
+
+  resources :drivers do
+    resources :tloads, only: [:index]
+  end
+  
+  resources :fields do 
+    resources :tloads, only: [:index]
+  end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "sessions#home"
 end
