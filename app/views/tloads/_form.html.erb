@@ -35,19 +35,16 @@
   </p>
 
   <br></br>
-
   <%= f.label :bin_id, "Select a Bin" %>
-  <%= f.collection_select(:bin, Bin.all, :id, :name, prompt: true) %>
+  <%= f.collection_select(:bin_id, Bin.all, :id, :name, prompt: true) %>
 
   <br></br>
-
   <%= f.label :driver_id, "Select a Driver" %>
-  <%= f.collection_select(:driver, Driver.all, :id, :name, prompt: true) %>
+  <%= f.collection_select(:driver_id, Driver.all, :id, :name, prompt: true) %>
 
   <br></br>
-
   <%= f.label :field_id, "Select a Field" %>
-  <%= f.collection_select(:field, Field.all, :id, :name, prompt: true) %>
+  <%= f.collection_select(:field_id, Field.all, :id, :name, prompt: true) %>
 
   <br></br>
 

@@ -1,22 +1,22 @@
 class Tload < ApplicationRecord
-  belongs_to :user
   belongs_to :driver
   belongs_to :bin
   belongs_to :field
+ 
+	validates :load_full, presence: true
+	validates :load_empty, presence: true
+
+  before_validation :net_weight, :bushels
   
-  validates :driver_id, presence: true
-  validates :bin_id, presence: true
-  validates :field_id, presence: true
-	validates :load_in, presence: true
-	validates :load_out, presence: true
-  
+  private
+
   def net_weight
-    load_in - load_out
+    self.net_weight = self.load_full - self.load_empty
   end
 
   def bushels
-     # calculates bushels of load based off net_weight 
-    net_weight / 56
+    crop == crop[0] ? crop = 56 : crop = 60
+    self.bushels = net_weight / crop
   end
 
 end

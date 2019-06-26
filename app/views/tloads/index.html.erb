@@ -6,13 +6,13 @@
 	<tr>
 		<th>Load In</th>
 		<th>Load Out</th>
-		<th>Test Weight</th>
+		<th>Crop</th>
 	</tr>
 	<% @tloads.each do |tload| %>
 		<tr>
 			<td><%= tload.load_full %></td>
 			<td><%= tload.load_empty %></td>
-			<td><%= tload.test_weight %></td>
+			<td><%= tload.crop %></td>
 			<td><%= link_to 'Show', tload_path(tload) %></td>
 			<td><%= link_to 'Edit', edit_tload_path(tload) %></td>
 			<td><%= link_to 'Destroy', tload_path(tload), method: :delete, data: { confirm: 'Are you sure?' } %></td>

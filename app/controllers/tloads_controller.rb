@@ -17,13 +17,12 @@ class TloadsController < ApplicationController
 	end
 
 	def create
-    @tload = current_user.tload.build(tload_params)
-
+    @tload = Tload.new(tload_params)
     if @tload.save
 			redirect_to tload_path(@tload)
-		else
-			render :new 
-		end
+    else
+      render :new
+    end
 	end
 
 	def update
@@ -46,7 +45,7 @@ class TloadsController < ApplicationController
 	private
 
 	def tload_params
-		params.require(:tload).permit(:load_full, :load_empty, :net_weight, :crop, :moisture, :bushels, :in_out, :bin_id, :driver_id, :field_id)
+		params.require(:tload).permit(:load_full, :load_empty, :net_weight, :crop, :moisture, :bushels, :in_out, :bin_id, :field_id, :driver_id)
 	end
 
 end

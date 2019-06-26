@@ -1,7 +1,11 @@
 class DriversController < ApplicationController
 
 	def index
-		@drivers = Driver.all
+    if params[:bin_id]
+      @drivers = Bin.find(params[:bin_id]).drivers
+    else
+		  @drivers = Driver.all
+    end
 	end
 
 	def show
