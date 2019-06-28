@@ -7,15 +7,13 @@ class Tload < ApplicationRecord
 	validates :load_empty, presence: true
 
   before_validation :net_weight, :bushels
-  
-  private
 
   def net_weight
     self.net_weight = self.load_full - self.load_empty
   end
 
   def bushels
-    crop == crop[0] ? crop = 56 : crop = 60
+    crop == "Corn" ? crop = 56 : crop = 60
     self.bushels = net_weight / crop
   end
 

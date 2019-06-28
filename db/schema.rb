@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_26_193156) do
+ActiveRecord::Schema.define(version: 2019_06_27_060850) do
 
   create_table "bins", force: :cascade do |t|
     t.string "name"
@@ -43,10 +43,10 @@ ActiveRecord::Schema.define(version: 2019_06_26_193156) do
     t.integer "bushels"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "in_out", default: false, null: false
     t.integer "bin_id"
     t.integer "driver_id"
     t.integer "field_id"
+    t.string "in_out"
   end
 
   create_table "users", force: :cascade do |t|

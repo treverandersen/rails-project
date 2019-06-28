@@ -1,21 +1,26 @@
 <p>
   <strong>+ in / - out</strong>
+  <%= @tload.in_out %>
 </p>
 
 <p>
   <strong>Crop:</strong>
+  <%= @tload.crop %>
 </p>
 
 <p>
 	<strong>Load Full:</strong>
+  <%= @tload.load_full %>
 </p>
 
 <p>
 	<strong>Load Empty:</strong>
+  <%= @tload.load_empty %>
 </p>
 
 <p>
   <strong>net_weight:</strong>
+  <%= @tload.net_weight %>
 </p>
 
 <p>
@@ -24,18 +29,22 @@
 
 <p>
   <strong>Bushels:</strong>
+  <%= @tload.bushels %>
 </p>
 
 <p>
   <strong>Bin:</strong>
+  <%= @tload.bin.name %>
 </p>
 
 <p>
   <strong>Field:</strong>
+  <%= @tload.field.name %>
 </p>
 
 <p>
   <strong>Driver:</strong>
+  <%= @tload.driver.name %>
 </p>
 
 <%= link_to 'Edit', edit_tload_path(@tload) %>

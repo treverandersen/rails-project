@@ -6,6 +6,7 @@ class BinsController < ApplicationController
 
 	def show
 		@bin = Bin.find(params[:id])
+    @bin.bin_level
 	end
 
 	def new

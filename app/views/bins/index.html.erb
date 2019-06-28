@@ -6,11 +6,13 @@
 	<tr>
 		<th>Bin Name</th>
 		<th>Bushel Capacity</th>
+    <th>Bin Level</th>
 	</tr>
 	<% @bins.each do |bin| %>
 		<tr>
 			<td><%= bin.name %></td>
-			<td><%= bin.bushel_capacity %>
+      <td><%= bin.bushel_capacity %></td>
+      <td><%= bin.bin_level %>%</td>
 			<td><%= link_to 'Show', bin_path(bin) %></td>
 			<td><%= link_to 'Edit', edit_bin_path(bin) %></td>
 			<td><%= link_to 'Destroy', bin_path(bin), method: :delete, data: { confirm: 'Are you sure?' } %></td>

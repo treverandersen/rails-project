@@ -13,7 +13,11 @@
 			</ul>
 		</div>
 	<% end %>
-  
+
+  <p>
+  <%= f.select(:in_out, ["+ Load In", "- Load Out"] ) %>
+  </p>
+
 	<p>
 		<%= f.label :load_full %>
 		<%= f.number_field :load_full %>
