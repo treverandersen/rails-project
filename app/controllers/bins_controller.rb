@@ -1,16 +1,15 @@
 class BinsController < ApplicationController
 
 	def index
-		@bins = Bin.all
+    @bins = Bin.all
 	end
 
 	def show
-		@bin = Bin.find(params[:id])
-    @bin.bin_level
+    @bin = Bin.find(params[:id])
 	end
 
 	def new
-		@bin = Bin.new
+    @bin = Bin.new
 	end
 
 	def edit
@@ -18,7 +17,7 @@ class BinsController < ApplicationController
 	end
 
 	def create
-		@bin = Bin.new(bin_params)
+    @bin = Bin.new(bin_params)
 
 		if @bin.valid?
 			@bin.save
