@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_01_173718) do
+ActiveRecord::Schema.define(version: 2019_07_25_213649) do
 
   create_table "bins", force: :cascade do |t|
     t.string "name"
@@ -18,12 +18,14 @@ ActiveRecord::Schema.define(version: 2019_07_01_173718) do
     t.integer "level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "drivers", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "fields", force: :cascade do |t|
@@ -32,6 +34,7 @@ ActiveRecord::Schema.define(version: 2019_07_01_173718) do
     t.integer "bushel_per_acre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "tloads", force: :cascade do |t|
@@ -40,13 +43,15 @@ ActiveRecord::Schema.define(version: 2019_07_01_173718) do
     t.integer "net_weight"
     t.string "crop"
     t.decimal "moisture"
-    t.integer "bushels"
+    t.integer "dry_bushels"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "bin_id"
     t.integer "driver_id"
     t.integer "field_id"
     t.string "in_out"
+    t.integer "wet_bushels"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
