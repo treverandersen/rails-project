@@ -46,7 +46,7 @@ class TloadsController < ApplicationController
 	private
 
 	def tload_params
-		params.require(:tload).permit(:load_full, :load_empty, :net_weight, :crop, :moisture, :bushels, :in_out, :bin_id, :field_id, :driver_id)
+		params.require(:tload).permit(:load_full, :load_empty, :net_weight, :crop, :moisture, :wet_bushels, :dry_bushels, :in_out, :bin_id, :field_id, :driver_id)
 	end
 
 end
