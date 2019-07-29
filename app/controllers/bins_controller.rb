@@ -1,7 +1,7 @@
 class BinsController < ApplicationController
 
 	def index
-    @bins = current_user.bins.all
+    @bins = Bin.all
 	end
 
 	def show

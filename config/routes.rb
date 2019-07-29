@@ -7,15 +7,15 @@ Rails.application.routes.draw do
   resources :users, :tloads 
 
   resources :bins do
-    resources :drivers, :fields, :tloads,  only: [:index]
+    resources :drivers, :fields, :tloads,  only: [:index, :show]
   end
 
   resources :drivers do
-    resources :tloads, only: [:index]
+    resources :tloads, only: [:index, :show]
   end
   
   resources :fields do 
-    resources :tloads, only: [:index]
+    resources :tloads, only: [:index, :show]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
