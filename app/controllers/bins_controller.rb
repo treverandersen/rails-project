@@ -17,10 +17,9 @@ class BinsController < ApplicationController
 	end
 
 	def create
-    @bin = Bin.new(bin_params)
-
-		if @bin.valid?
-			@bin.save
+    @bin = current_user.bins.build(bin_params)
+		if @bin.save
+      flash[:message] = "Successfully created a new bin!"
 			redirect_to bin_path(@bin)
 		else
 			render :new 
