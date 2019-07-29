@@ -1,11 +1,7 @@
 class DriversController < ApplicationController
 
 	def index
-    if params[:bin_id]
-      @drivers = Bin.find(params[:bin_id]).drivers
-    else
-		  @drivers = Driver.all
-    end
+    @drivers = current_user.drivers.all
 	end
 
 	def show
@@ -21,10 +17,9 @@ class DriversController < ApplicationController
 	end
 
 	def create
-		@driver = Driver.new(driver_params)
-
-		if @driver.valid?
-			@driver.save
+    @driver = current_user.drivers.build(driver_params)
+		if @driver.save
+      flash[:message] = "Successfully created a new driver!"
 			redirect_to driver_path(@driver)
 		else
 			render :new 

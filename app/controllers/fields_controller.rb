@@ -1,7 +1,7 @@
 class FieldsController < ApplicationController
 
 	def index
-		@fields = Field.all
+    @fields = current_user.fields.all
 	end
 
 	def show
@@ -17,10 +17,10 @@ class FieldsController < ApplicationController
 	end
 
 	def create
-		@field = Field.new(field_params)
+    @field = current_user.fields.build(field_params)
 
-		if @field.valid?
-			@field.save
+		if @field.save
+      flash[:message] = "Successfully created a new field!"
 			redirect_to field_path(@field)
 		else
 			render :new 

@@ -1,7 +1,7 @@
 class TloadsController < ApplicationController
 
 	def index
-		@tloads = Tload.all
+    @tloads = current_user.tloads.all
 	end
 
 	def show
@@ -17,8 +17,9 @@ class TloadsController < ApplicationController
 	end
 
 	def create
-    @tload = Tload.new(tload_params)
+    @tload = current_user.tloads.build(tload_params)
     if @tload.save
+      flash[:message] = "Successfully created a new load!"
 			redirect_to tload_path(@tload)
     else
       render :new
