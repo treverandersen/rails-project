@@ -7,18 +7,4 @@ class Bin < ApplicationRecord
 	validates :name, presence: true
 	validates :bushel_capacity, presence: true
 
-  def bin_level
-    current_level = 0
-    self.tloads.each do |load|
-      per_cent = load.bushels.to_f / self.bushel_capacity.to_f * 100.0
-      if load.in_out == "+ Load In"
-        current_level += per_cent.round
-      elsif load.in_out == "- Load Out"
-        current_level -= per_cent.round
-      else
-        0
-      end
-    end
-    current_level
-  end
 end

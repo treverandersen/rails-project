@@ -1,18 +1,5 @@
 <%= form_for @tload do |f| %>
-	<% if @tload.errors.any? %>
-		<div id="error_explanation">
-			<h2>
-				<%= pluralize(@tload.errors.count, "error") %>
-				prohibited this load from being saved:
-			</h2>
-			
-			<ul>
-			<% @tload.errors.full_messages.each do |msg| %>
-				<li><%= msg %></li>
-			<% end %>
-			</ul>
-		</div>
-	<% end %>
+  <%= render partial: "layouts/errors", locals: { object: @tload } %>
 
   <p>
   <%= f.select(:in_out, ["+ Load In", "- Load Out"] ) %>
