@@ -19,3 +19,9 @@
 		</tr>
 	<% end %>
 </table>
+
+<h3>All Incoming Loads:</h3>
+<% current_user.tloads.incoming_loads.each do |l| %>
+  Bushels: <%= l.dry_bushels %>, Crop: <%= l.crop %>
+<% end %>
+

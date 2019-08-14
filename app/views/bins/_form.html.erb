@@ -1,18 +1,5 @@
 <%= form_for @bin do |f| %>
-	<% if @bin.errors.any? %>
-		<div id="error_explanation">
-			<h2>
-				<%= pluralize(@bin.errors.count, "error") %>
-				prohibited this bin from being saved:
-			</h2>
-			
-			<ul>
-			<% @bin.errors.full_messages.each do |msg| %>
-				<li><%= msg %></li>
-			<% end %>
-			</ul>
-		</div>
-	<% end %>
+  <%= render partial: "layouts/errors", locals: { object: @bin } %>
 
 	<p>
 		<%= f.label :name %>
