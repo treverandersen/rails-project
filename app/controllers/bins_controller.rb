@@ -6,8 +6,8 @@ class BinsController < ApplicationController
 
 	def show
     @bin = Bin.find(params[:id])
-    binding.pry
-    @total_dry_bushels = Bin.total_dry_bushels
+    @total_dry_bushels = Bin.total_dry_bushels(@bin.id)
+    @total_wet_bushels = Bin.total_wet_bushels(@bin.id)
 	end
 
 	def new

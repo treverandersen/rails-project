@@ -20,8 +20,13 @@
 	<% end %>
 </table>
 
-<h3>All Incoming Loads:</h3>
+<h3>Last 5 Incoming Loads:</h3>
 <% current_user.tloads.incoming_loads.each do |l| %>
-  Bushels: <%= l.dry_bushels %>, Crop: <%= l.crop %>
+  Bushels: <%= l.dry_bushels %>, Crop: <%= l.crop %><br>
+<% end %>
+
+<h3>Last 5 Outgoing Loads:</h3>
+<% current_user.tloads.outgoing_loads.each do |l| %>
+  Bushels: <%= l.dry_bushels %>, Crop: <%= l.crop %><br>
 <% end %>
 

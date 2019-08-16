@@ -9,7 +9,8 @@ class Tload < ApplicationRecord
 
   before_validation :net_weight, :wet_bushels, :shrink, :dry_bushels
 
-  scope :incoming_loads, -> { where(in_out: '+ Load In') }
+  scope :incoming_loads, -> { where(in_out: '+ Load In').last(5) }
+  scope :outgoing_loads, -> { where(in_out: '- Load Out').last(5) }
 
   def net_weight
     self.net_weight = self.load_full - self.load_empty

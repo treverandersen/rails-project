@@ -6,6 +6,8 @@ class FieldsController < ApplicationController
 
 	def show
 		@field = Field.find(params[:id])
+    @total_dry_bushels = Field.total_dry_bushels(@field.id)
+    @total_wet_bushels = Field.total_wet_bushels(@field.id)
 	end
 
 	def new
