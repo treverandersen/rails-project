@@ -11,6 +11,9 @@ class Tload < ApplicationRecord
 
   scope :incoming_loads, -> { where(in_out: '+ Load In').last(5) }
   scope :outgoing_loads, -> { where(in_out: '- Load Out').last(5) }
+  scope :all_loads_for_bin, -> (bin_id) { Tload.all.where('bin_id = ?', bin_id) }
+  scope :all_loads_for_driver, -> (driver_id) { Tload.all.where('driver_id = ?', driver_id) }
+  scope :all_loads_for_field, -> (field_id) { Tload.all.where('field_id = ?', field_id) }
 
   def net_weight
     self.net_weight = self.load_full - self.load_empty

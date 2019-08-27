@@ -9,5 +9,4 @@ class Bin < ApplicationRecord
 
   scope :total_dry_bushels, -> (id) { where(id: id).joins(:tloads).pluck(:dry_bushels).sum }
   scope :total_wet_bushels, -> (id) { where(id: id).joins(:tloads).pluck(:wet_bushels).sum }
-
 end

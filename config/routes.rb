@@ -4,19 +4,29 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
   
-  resources :users, :tloads 
-
   resources :bins do
-    resources :drivers, :fields, :tloads,  only: [:index, :show]
+    resources :tloads, only: [:index, :new, :create]
+    resources :fields, only: [:index]
+    resources :drivers, only: [:index]
   end
 
   resources :drivers do
-    resources :tloads, only: [:index, :show]
+    resources :tloads, only: [:index, :new, :create]
+    resources :bins, only: [:index]
+    resources :fields, only: [:index]
   end
   
   resources :fields do 
-    resources :tloads, only: [:index, :show]
+    resources :tloads, only: [:index, :new, :create]
+    resources :bins, only: [:index]
+    resources :drivers, only: [:index]
   end
+
+  resources :drivers
+  resources :fields
+  resources :bins
+  resources :tloads
+  resources :users
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "sessions#home"

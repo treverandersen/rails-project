@@ -8,10 +8,17 @@ class BinsController < ApplicationController
     @bin = Bin.find(params[:id])
     @total_dry_bushels = Bin.total_dry_bushels(@bin.id)
     @total_wet_bushels = Bin.total_wet_bushels(@bin.id)
+    @current_level = @total_dry_bushels.to_f / @bin.bushel_capacity.to_f 
+    @current_level = @current_level * 100
+    @current_level = @current_level.round
 	end
 
 	def new
-    @bin = Bin.new
+    if params[:bin_id] && bin = Bin.find_by_id(params[:bin_id])
+      @bin = @tload.bins.build
+    else
+      @bin = Bin.new
+    end
 	end
 
 	def edit

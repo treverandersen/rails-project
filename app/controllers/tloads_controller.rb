@@ -1,15 +1,31 @@
 class TloadsController < ApplicationController
 
-	def index
-    @tloads = current_user.tloads.all
-	end
+  def index
+    if params[:bin_id] && bin = Bin.find_by_id(params[:bin_id])
+      @tloads = Tload.all_loads_for_bin(bin.id)
+    elsif params[:driver_id] && driver = Driver.find_by_id(params[:driver_id])
+      @tloads = Tload.all_loads_for_driver(driver.id)
+    elsif params[:field_id] && field = Field.find_by_id(params[:field_id])
+      @tloads = Tload.all_loads_for_field(field.id)
+    else
+      @tloads = current_user.tloads.all
+    end
+  end
 
 	def show
 		@tload = Tload.find(params[:id])
 	end
 
 	def new
-		@tload = Tload.new
+    if params[:driver_id] && driver = Driver.find_by_id(params[:driver_id])
+      @tload = driver.tloads.build
+    elsif params[:field_id] && field = Field.find_by_id(params[:field_id])
+      @tload = field.tloads.build
+    elsif params[:bin_id] && bin = Bin.find_by_id(params[:bin_id])
+      @tload = bin.tloads.build
+    else
+		  @tload = Tload.new
+    end
 	end
 
 	def edit

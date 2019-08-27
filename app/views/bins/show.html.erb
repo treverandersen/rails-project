@@ -1,3 +1,9 @@
+<%= link_to 'Edit', edit_bin_path(@bin) %>
+<%= link_to 'Back', bins_path %>
+<%= link_to "Show all Drivers", bin_drivers_path(@bin.id) %>
+<%= link_to "Show all Fields", bin_fields_path(@bin.id) %>
+<%= link_to "Show all Loads", bin_tloads_path(@bin.id) %>
+<%= link_to "Add New Load", new_bin_tload_path(@bin.id) %>
 <p>
 	<strong>Bin Name:</strong>
 	<%= @bin.name %>
@@ -20,7 +26,12 @@
   <%= @total_wet_bushels %>
 </p>
 
-<%= link_to 'Edit', edit_bin_path(@bin) %>
-<%= link_to 'Back', bins_path %>
+<p>
+  <strong>Current Level:</strong>
+  <%= @current_level %>%
+</p>
+
+</p>
+
 
 

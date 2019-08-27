@@ -26,16 +26,29 @@
   </p>
 
   <br></br>
-  <%= f.label :bin_id, "Select a Bin" %>
-  <%= f.collection_select(:bin_id, current_user.bins, :id, :name, prompt: true) %>
-
+  <% if @bin %>
+    <p>Bin: <%= @bin.name %></p>
+    <%= f.hidden.field :bin_id %>
+  <% else %>
+    <%= f.label :bin_id, "Select a Bin" %>
+    <%= f.collection_select(:bin_id, current_user.bins, :id, :name, prompt: true) %>
+  <% end %>
   <br></br>
-  <%= f.label :driver_id, "Select a Driver" %>
-  <%= f.collection_select(:driver_id, current_user.drivers, :id, :name, prompt: true) %>
-
+  <% if @driver %>
+    <p>Driver: <%= @driver.name %></p>
+    <%= f.hidden.field :driver_id %>
+  <% else %>
+    <%= f.label :driver_id, "Select a Driver" %>
+    <%= f.collection_select(:driver_id, current_user.drivers, :id, :name, prompt: true) %>
+  <% end %>
   <br></br>
-  <%= f.label :field_id, "Select a Field" %>
-  <%= f.collection_select(:field_id, current_user.fields, :id, :name, prompt: true) %>
+  <% if @field %>
+    <p>Field: <%= @field.name %></p>
+    <%= f.hidden.field :field_id %>
+  <% else %>
+    <%= f.label :field_id, "Select a Field" %>
+    <%= f.collection_select(:field_id, current_user.fields, :id, :name, prompt: true) %>
+  <% end %>
 
   <br></br>
 

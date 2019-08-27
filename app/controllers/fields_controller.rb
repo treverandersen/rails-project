@@ -1,7 +1,11 @@
 class FieldsController < ApplicationController
 
 	def index
-    @fields = current_user.fields.all
+    if params[:bin_id] && bin = Bin.find_by_id(params[:bin_id])
+      @fields = Field.all_fields_for_bin(bin.id)
+    else
+      @fields = current_user.fields.all
+    end
 	end
 
 	def show
@@ -11,7 +15,11 @@ class FieldsController < ApplicationController
 	end
 
 	def new
-		@field = Field.new
+    if params[:field_id] && @field = Field.find_by_id(params[:field_id])
+      @field = @tload.fields.build
+    else
+		  @field = Field.new
+    end
 	end
 
 	def edit

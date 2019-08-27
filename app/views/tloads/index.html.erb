@@ -2,31 +2,35 @@
 
 <%= link_to "New load", new_tload_path %>
 
-<table>
-	<tr>
-		<th>Load In</th>
-		<th>Load Out</th>
-		<th>Crop</th>
-	</tr>
-	<% @tloads.each do |tload| %>
-		<tr>
-			<td><%= tload.load_full %></td>
-			<td><%= tload.load_empty %></td>
-			<td><%= tload.crop %></td>
-			<td><%= link_to 'Show', tload_path(tload) %></td>
-			<td><%= link_to 'Edit', edit_tload_path(tload) %></td>
-			<td><%= link_to 'Destroy', tload_path(tload), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-		</tr>
-	<% end %>
-</table>
-
 <h3>Last 5 Incoming Loads:</h3>
 <% current_user.tloads.incoming_loads.each do |l| %>
-  Bushels: <%= l.dry_bushels %>, Crop: <%= l.crop %><br>
+  Bushels: <%= l.dry_bushels %>, Crop: <%= l.crop %>, Bin: <%= l.bin.name %>, Field: <%= l.field.name %>, Driver: <%= l.driver.name %><br>
 <% end %>
 
 <h3>Last 5 Outgoing Loads:</h3>
 <% current_user.tloads.outgoing_loads.each do |l| %>
   Bushels: <%= l.dry_bushels %>, Crop: <%= l.crop %><br>
 <% end %>
+
+<table>
+	<tr>
+    <th>Bushels</th>
+    <th>Crop</th>
+    <th>Bin</th>
+    <th>Field</th>
+    <th>Driver</th>
+	</tr>
+	<% @tloads.each do |tload| %>
+		<tr>
+      <td><%= tload.dry_bushels %></td>
+      <td><%= tload.crop %></td>
+      <td><%= tload.bin.name %></td>
+      <td><%= tload.field.name %></td>
+      <td><%= tload.driver.name %></td>
+			<td><%= link_to 'Show', tload_path(tload) %></td>
+			<td><%= link_to 'Edit', edit_tload_path(tload) %></td>
+			<td><%= link_to 'Destroy', tload_path(tload), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		</tr>
+	<% end %>
+</table>
 
