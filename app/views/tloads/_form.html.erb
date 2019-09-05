@@ -32,24 +32,63 @@
   <% else %>
     <%= f.label :bin_id, "Select a Bin" %>
     <%= f.collection_select(:bin_id, current_user.bins, :id, :name, prompt: true) %>
+
+    <h3>Or Add A New Bin:</h3>
+    <%= f.fields_for :bin do |bin_fields| %>
+      <p>
+		    <%= bin_fields.label :name %>
+		    <%= bin_fields.text_field :name %>
+	    </p>
+	    <p>
+		    <%= bin_fields.label :bushel_capacity %>
+		    <%= bin_fields.text_field :bushel_capacity %>
+	    </p>
+      <%= bin_fields.hidden_field :user_id, :value => current_user.id %> 
+    <% end %>
+
   <% end %>
   <br></br>
+
   <% if @driver %>
     <p>Driver: <%= @driver.name %></p>
     <%= f.hidden.field :driver_id %>
   <% else %>
     <%= f.label :driver_id, "Select a Driver" %>
     <%= f.collection_select(:driver_id, current_user.drivers, :id, :name, prompt: true) %>
+
+    <h3>Or Add A New Driver</h3>
+    <%= f.fields_for :driver do |driver_fields| %>
+      <p>
+        <%= driver_fields.label :name %>
+        <%= driver_fields.text_field :name %>
+      </p>
+      <%= driver_fields.hidden_field :user_id, :value => current_user.id %>
+    <% end %>
+
   <% end %>
   <br></br>
+  
   <% if @field %>
     <p>Field: <%= @field.name %></p>
     <%= f.hidden.field :field_id %>
   <% else %>
     <%= f.label :field_id, "Select a Field" %>
     <%= f.collection_select(:field_id, current_user.fields, :id, :name, prompt: true) %>
-  <% end %>
+    
+    <h3>Or Add A New Field</h3>
+    <%= f.fields_for :field do |field_fields| %>
+      <p>
+        <%= field_fields.label :name %>
+        <%= field_fields.text_field :name %>
+      </p>
+      <p>
+        <%= field_fields.label :acres %>
+        <%= field_fields.text_field :acres %>
+      </p>
+      <%= field_fields.hidden_field :user_id, :value => current_user.id %>
+    <% end %>
 
+  <% end %>
   <br></br>
 
 	<p>

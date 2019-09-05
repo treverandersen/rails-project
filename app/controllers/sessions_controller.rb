@@ -5,13 +5,19 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
+    if auth_hash = request.env["omniauth.auth"]
+      user = User.find_or_create_by_omniauth(auth_hash)
       log_in(user)
       redirect_to tloads_path
     else
-      flash.now[:danger] = "Invalid email/password combination"
-      render 'new'
+      user = User.find_by(email: params[:session][:email].downcase)
+      if user && user.authenticate(params[:session][:password])
+        log_in(user)
+        redirect_to tloads_path
+      else
+        flash.now[:danger] = "Invalid email/password combination"
+        render 'new'
+      end
     end
   end
 

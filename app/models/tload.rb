@@ -4,13 +4,15 @@ class Tload < ApplicationRecord
   belongs_to :bin
   belongs_to :field
  
+  accepts_nested_attributes_for :bin, reject_if: proc { |attributes| attributes['name'].blank? } 
+  accepts_nested_attributes_for :field, reject_if: proc { |attributes| attributes['name'].blank? }
+  accepts_nested_attributes_for :driver, reject_if: proc { |attributes| attributes['name'].blank? }
+
 	validates :load_full, presence: true
 	validates :load_empty, presence: true
 
   before_validation :net_weight, :wet_bushels, :shrink, :dry_bushels
 
-  scope :incoming_loads, -> { where(in_out: '+ Load In').last(5) }
-  scope :outgoing_loads, -> { where(in_out: '- Load Out').last(5) }
   scope :all_loads_for_bin, -> (bin_id) { Tload.all.where('bin_id = ?', bin_id) }
   scope :all_loads_for_driver, -> (driver_id) { Tload.all.where('driver_id = ?', driver_id) }
   scope :all_loads_for_field, -> (field_id) { Tload.all.where('field_id = ?', field_id) }

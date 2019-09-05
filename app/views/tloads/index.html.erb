@@ -1,16 +1,7 @@
-<h1>All Loads</h1>
+<h1><%= @name %></h1>
+<h2>All Loads</h2>
 
 <%= link_to "New load", new_tload_path %>
-
-<h3>Last 5 Incoming Loads:</h3>
-<% current_user.tloads.incoming_loads.each do |l| %>
-  Bushels: <%= l.dry_bushels %>, Crop: <%= l.crop %>, Bin: <%= l.bin.name %>, Field: <%= l.field.name %>, Driver: <%= l.driver.name %><br>
-<% end %>
-
-<h3>Last 5 Outgoing Loads:</h3>
-<% current_user.tloads.outgoing_loads.each do |l| %>
-  Bushels: <%= l.dry_bushels %>, Crop: <%= l.crop %><br>
-<% end %>
 
 <table>
 	<tr>

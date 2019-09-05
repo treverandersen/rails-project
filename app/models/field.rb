@@ -3,7 +3,7 @@ class Field < ApplicationRecord
   has_many :tloads
 
 	validates :name, presence: true
-	validates :name, uniqueness: true
+	validates :name, :uniqueness => { :scope => :user_id }
 	validates :acres, presence: true
 
   scope :total_dry_bushels, -> (id) { where(id: id).joins(:tloads).pluck(:dry_bushels).sum }

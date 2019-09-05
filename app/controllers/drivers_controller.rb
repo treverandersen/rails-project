@@ -3,6 +3,10 @@ class DriversController < ApplicationController
 	def index
     if params[:bin_id] && bin = Bin.find_by_id(params[:bin_id])
       @drivers = Driver.all_drivers_for_bin(bin.id)
+      @name = Bin.find_by_id(bin.id).name
+    elsif params[:field_id] && field = Field.find_by_id(params[:field_id])
+      @drivers = Driver.all_drivers_for_field(field.id)
+      @name = Field.find_by_id(field.id).name
     else
       @drivers = current_user.drivers.all
     end

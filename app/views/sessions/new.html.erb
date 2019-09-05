@@ -1,4 +1,4 @@
-<h1>Log In!</h1>
+<h1>Log In with Email:</h1>
 
 <%= form_for(:session, url: login_path) do |f| %>
   <%= f.label :email %>
@@ -9,3 +9,6 @@
 
   <%= f.submit 'Log in' %>
 <% end %>
+
+<h3>Log In with Github:</h3>
+<p><%= link_to "Log In", "/auth/github" %></p>
