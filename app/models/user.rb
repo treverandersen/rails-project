@@ -8,8 +8,10 @@ class User < ApplicationRecord
   has_many :fields
   
   validates :username, :email, presence: true, length: { maximum: 255 }
-  validates :username, :email, :uniqueness => { :scope => :user_id }
+  validates :username, :email, uniqueness: true
   validates :password, presence: true
+
+  scope :user_with_most_loads, -> { User.find_by_id(Tload.all.maximum("user_id")).username }
 
   def self.find_or_create_by_omniauth(auth_hash)
     self.where(:email => auth_hash["info"]["email"]).first_or_create do |user|

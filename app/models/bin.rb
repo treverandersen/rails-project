@@ -5,6 +5,7 @@ class Bin < ApplicationRecord
   has_many :fields, through: :tloads
 
 	validates :name, presence: true
+  validates :name, :uniqueness => { :scope => :user_id }
 	validates :bushel_capacity, presence: true
 
   scope :total_dry_bushels, -> (id) { where(id: id).joins(:tloads).pluck(:dry_bushels).sum }

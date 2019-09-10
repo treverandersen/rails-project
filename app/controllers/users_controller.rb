@@ -5,6 +5,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
   
+  def loads
+    @user_with_most_loads = User.user_with_most_loads
+  end
+
   def show
     @user = User.find(params[:id])
   end

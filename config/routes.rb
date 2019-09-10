@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
   get '/auth/:provider/callback' => 'sessions#create'
   
+  get '/most-loads' => 'users#loads'
+
   resources :bins do
     resources :tloads, only: [:index, :new, :create]
     resources :fields, only: [:index]
